@@ -24,4 +24,4 @@ steps:
   displayName: Create GitHub Release
   inputs:
    githubConnection: Azure Test Release
-   assets: **/*.txt
+   assets: '$(Build.ArtifactStagingDirectory)/**/*.txt'
