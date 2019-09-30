@@ -14,12 +14,13 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
+    mkdir -p $(Build.ArtifactStagingDirectory)/test
+    echo Add other tasks to build, test, and deploy your project. > $(Build.ArtifactStagingDirectory)/test/test0.txt
+    echo See https://aka.ms/yaml > $(Build.ArtifactStagingDirectory)/test/test1.txt
   displayName: 'Run a multi-line script'
 
 - task: GithubRelease@0
   displayName: Create GitHub Release
   inputs:
    githubConnection: Azure Test Release
-   assets: 'README.md'
+   assets: '**/*.txt'
