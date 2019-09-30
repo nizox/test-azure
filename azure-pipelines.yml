@@ -21,6 +21,7 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: GithubRelease@0
+  condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/tags/'))
   displayName: Create GitHub Release
   inputs:
    githubConnection: Azure Test Release
